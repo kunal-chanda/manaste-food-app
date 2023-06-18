@@ -162,7 +162,7 @@ const card = [
   {
     data: {
       areaName: "Sodepur",
-      avgRating: 3.9,
+      avgRating: 3.8,
       cloudinaryImageId: "gy8nv6gdvcudynuq3770",
       costForTwo: "₹400 for two",
       cuisines: ["Chinese", "Thai", "Seafood", "Beverages", "Desserts"],
