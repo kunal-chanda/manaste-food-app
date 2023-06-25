@@ -10,7 +10,7 @@ function Restrocard(props) {
       <img
         className="res-img"
         src={IMG_LINK + "/" + cloudinaryImageId}
-        alt="res-image"
+        alt="Restro Card"
       />
       <h3 className="res-name">{name.toUpperCase()}</h3>
       <h4 className="res-cuisines">{cuisines.join(", ")}</h4>
