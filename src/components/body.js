@@ -23,7 +23,7 @@ export default function Body() {
   /* if(restoCard?.length===0){
     return <Shimmer/>
   } */
-  return restoCard.length===0 ? (
+  return restoCard?.length===0 ? (
      <Shimmer /> 
    ) : (
     <div className="body-container">
