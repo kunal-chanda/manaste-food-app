@@ -5,10 +5,13 @@ import Shimmer from "./Shimmer";
 
 export default function Body() {
   const [restoCard, updateCard] = useState([]);
+  const [searchtText, setSearchText] = useState("");
 
   useEffect(()=>{
     fetchData();
   },[])
+
+  //console.log(restoCard);
 
   const fetchData = async ()=>{
     let data = await fetch(
@@ -27,6 +30,19 @@ export default function Body() {
      <Shimmer /> 
    ) : (
     <div className="body-container">
+      <>
+        <input type="text" value={searchtText} onChange={(e)=> setSearchText(e.target.value)} />
+        <button
+        onClick={()=> {
+          const searchResult = 
+          restoCard.filter((filterdRestro)=> filterdRestro.data.name.toLowerCase().includes(searchtText.toLocaleLowerCase())) 
+          updateCard(searchResult)
+        }
+        }
+        >
+          Search
+        </button>
+      </>
       <button
         className="top-rated"
         onClick={() => {
