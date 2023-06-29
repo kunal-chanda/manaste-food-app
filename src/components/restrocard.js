@@ -20,4 +20,4 @@ function Restrocard(props) {
   );
 }
 
-export default Restrocard;
+export default Restrocard

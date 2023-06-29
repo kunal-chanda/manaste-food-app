@@ -2,6 +2,7 @@ import "../App.css";
 import React, { useEffect, useState } from "react";
 import Restrocard from "./restrocard";
 import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 export default function Body() {
   const [restoCard, updateCard] = useState([]);
@@ -57,7 +58,7 @@ export default function Body() {
       </button>
       <div className="res-container">
         {restoCard?.map((restro) => (
-          <Restrocard resData={restro} key={restro.data.id} />
+          <Link to={"/restaurants/"+ restro.data.id} key={restro.data.id}><Restrocard resData={restro} /></Link>
         ))}
       </div>
     </div>

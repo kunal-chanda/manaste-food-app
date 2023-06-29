@@ -8,7 +8,7 @@ export default function Header() {
 
   return (
     <div className="header">
-      <img src={IMG_LOGO} alt="Namaste Food App Logo" className="logo" />
+      <img src={IMG_LOGO} alt="Namaste Food App Logo" className="logo"/>
       <ul className="navbar">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about" >About Us</Link></li>
