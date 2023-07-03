@@ -103,3 +103,8 @@
   height: 50px;
   font-weight: bold;
 }
+.user-class{
+  border: solid black;
+  background-color: beige;
+  margin-bottom: 10px;
+}
