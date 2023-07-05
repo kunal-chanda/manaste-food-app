@@ -1,25 +1,17 @@
-import { useEffect, useState } from "react";
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
-import { MENU_API } from "../utils/resource";
+import useRestroCards from "../utils/useRestroCards";
 
 const RestaurantMenu = ()=> {
-    const [restroInfo, setRestroInfo] = useState(null);
+    
     const {resId} = useParams();
-   
-    useEffect(()=>{
-        fetchRestaurantDetails();
-    },[]);
 
-    const fetchRestaurantDetails = async ()=>{
-        const data = await fetch(MENU_API + resId);
-        const json = await data.json();
-        setRestroInfo(json.data);
-    }
+    const restroInfo = useRestroCards(resId);
+   
     if(restroInfo === null) return <Shimmer />
 
-   const {name,cuisines,costForTwoMessage,avgRating} = restroInfo.cards[0]?.card?.card?.info;
-   const itemCards = [...restroInfo.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards];
+   const {name,cuisines,costForTwoMessage,avgRating} = restroInfo?.cards[0]?.card?.card?.info;
+   const itemCards = [...restroInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards];
 
     return(
         <div className="lits-of-menus">
