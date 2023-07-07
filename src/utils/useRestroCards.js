@@ -6,6 +6,7 @@ const useRestroCards = (resId) =>{
 
     useEffect(()=>{
         fetchRestaurantDetails();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[]);
 
     const fetchRestaurantDetails = async ()=>{
