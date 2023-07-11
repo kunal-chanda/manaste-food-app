@@ -32,20 +32,20 @@ export default function Body() {
    ) : (
     <div className="body-container">
       <>
-        <input type="text" value={searchtText} onChange={(e)=> setSearchText(e.target.value)} className="border-spacing-1" />
+        <input type="text" value={searchtText} onChange={(e)=> setSearchText(e.target.value)} className="border-4 mx-3 border-slate-950 rounded-xl" />
         <button
         onClick={()=> {
           const searchResult = 
           restoCard.filter((filterdRestro)=> filterdRestro.data.name.toLowerCase().includes(searchtText.toLocaleLowerCase())) 
           updateCard(searchResult)
         }
-        } className="mx-2 border-4 rounded-xl p-2"
+        } className="mx-2 border-4 rounded-xl p-2  border-slate-950"
         >
           Search
         </button>
       </>
       <button
-        className="top-rated border-4 rounded-xl p-2"
+        className="top-rated border-4 rounded-xl p-2  border-slate-950"
         onClick={() => {
           let topCard = restoCard.filter((topRated) => topRated.data.avgRating >= 4);
           updateCard(topCard);
@@ -53,10 +53,10 @@ export default function Body() {
       >
         Top Rated
       </button>
-      <button className="top-rated border-4 rounded-xl p-2" onClick={()=> fetchData()}>
+      <button className="top-rated border-4 rounded-xl p-2  border-slate-950" onClick={()=> fetchData()}>
         Clear Filter
       </button>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {restoCard?.map((restro) => (
           <Link to={"/restaurants/"+ restro.data.id} key={restro.data.id}><Restrocard resData={restro} /></Link>
         ))}

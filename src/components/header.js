@@ -9,7 +9,7 @@ export default function Header() {
   return (
     <div className="flex justify-between min-h-15 flex-row font-semibold bg-slate-400 text-2xl text-white items-center">
       <img src={IMG_LOGO} alt="Namaste Food App Logo" className="w-24 m-5 cursor-pointer"/>
-      <ul className="navbar m-7">
+      <ul className="navbar m-7 px-5">
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about" >About Us</Link></li>
         <li><Link to="/contact">Contact Us</Link></li>

@@ -14,7 +14,7 @@ const RestaurantMenu = ()=> {
    const itemCards = [...restroInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards];
 
     return(
-        <div className="lits-of-menus">
+        <div className="">
             <h1>{name}</h1>
             <p>{cuisines.join(",") +" "+costForTwoMessage}</p>
             <p>Rating: {avgRating}</p>
