@@ -5,7 +5,7 @@ import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 
 export default function Body() {
-  const [restoCard, updateCard] = useState([]);
+  const [restoCard, setRestoCard] = useState([]);
   const [searchtText, setSearchText] = useState("");
 
   useEffect(()=>{
@@ -16,12 +16,13 @@ export default function Body() {
 
   const fetchData = async ()=>{
     let data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.4791025&lng=88.37370639999999&page_type=DESKTOP_WEB_LISTING"
+      //"https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
       );
       const json = await data.json();
       //optional chaining
       const resCards = json?.data?.cards[2]?.data?.data?.cards;
-      updateCard(resCards);
+      setRestoCard(resCards);
   }
   //conditional rendering
   /* if(restoCard?.length===0){
@@ -37,7 +38,7 @@ export default function Body() {
         onClick={()=> {
           const searchResult = 
           restoCard.filter((filterdRestro)=> filterdRestro.data.name.toLowerCase().includes(searchtText.toLocaleLowerCase())) 
-          updateCard(searchResult)
+          setRestoCard(searchResult)
         }
         } className="mx-2 border-4 rounded-xl p-2  border-slate-950"
         >
@@ -48,7 +49,7 @@ export default function Body() {
         className="top-rated border-4 rounded-xl p-2  border-slate-950"
         onClick={() => {
           let topCard = restoCard.filter((topRated) => topRated.data.avgRating >= 4);
-          updateCard(topCard);
+          setRestoCard(topCard);
         }}
       >
         Top Rated
