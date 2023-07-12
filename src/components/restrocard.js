@@ -6,7 +6,7 @@ function Restrocard(props) {
   const { name, cuisines, avgRating, slaString , cloudinaryImageId } =
     props.resData.data;
   return (
-    <div className="m-2 p-2 h-[275px] w-52 flex flex-col border bg-slate-300 rounded-md">
+    <div className="m-2 p-2 h-[275px] w-52 flex flex-col border bg-slate-300 rounded-md hover:bg-sky-400">
       <img
         className="h-40 w-48 rounded-md"
         src={IMG_LINK + "/" + cloudinaryImageId}
