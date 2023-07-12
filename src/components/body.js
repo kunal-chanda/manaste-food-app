@@ -12,7 +12,7 @@ export default function Body() {
     fetchData();
   },[])
 
-  //console.log(restoCard);
+  console.log(restoCard);
 
   const fetchData = async ()=>{
     let data = await fetch(
