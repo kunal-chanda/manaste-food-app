@@ -17,8 +17,8 @@ const RestaurantMenu = ()=> {
    console.log(itemCategory)
 
     return(
-        <div className="border flex flex-col p-5 justify-center w-6/12">
-            {/* <p className="font-bold text-xl">{name}</p>
+        <div className="border flex flex-col p-5 w-6/12 m-auto ">
+            <p className="font-bold text-xl">{name}</p>
             <p>{cuisines.join(", ") +" - "+costForTwoMessage}</p>
             <p className="font-bold">Rating: {avgRating}</p>
             <p className="font-bold">Lits Of Items: </p>
@@ -27,7 +27,7 @@ const RestaurantMenu = ()=> {
              <li key={item.card?.info?.id}>{item.card?.info?.name} 
              { " -- "+item.card?.info?.description || " "}" -- Rs/-" 
              {(item.card?.info?.price)/100}</li>)}
-            </ul> */}
+            </ul>
             <ul>
                 {
                     itemCategory.map((itemCat)=>(
