@@ -1,6 +1,7 @@
 import Shimmer from "./Shimmer";
 import { useParams } from "react-router-dom";
 import useRestroCards from "../utils/useRestroCards";
+import RestaurantMenuAccordion from "./RestaurantMenuAccordion";
 
 const RestaurantMenu = ()=> {
     
@@ -12,12 +13,13 @@ const RestaurantMenu = ()=> {
 
    const {name,cuisines,costForTwoMessage,avgRating} = restroInfo?.cards[0]?.card?.card?.info;
    const itemCards = [...restroInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards];
-   const itemCategory = Object.values(restroInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR)
-   //const itemCategory = restroInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR
+   const itemCategory = restroInfo?.cards[2]?.groupedCard?.cardGroupMap?.REGULAR?.cards.filter((cat)=>
+    cat.card?.card?.["@type"] == "type.googleapis.com/swiggy.presentation.food.v2.ItemCategory"
+   );
    console.log(itemCategory)
 
     return(
-        <div className="border flex flex-col p-5 w-6/12 m-auto ">
+        <div className="border flex flex-col p-5 w-8/12 m-auto ">
             <p className="font-bold text-xl">{name}</p>
             <p>{cuisines.join(", ") +" - "+costForTwoMessage}</p>
             <p className="font-bold">Rating: {avgRating}</p>
@@ -30,10 +32,9 @@ const RestaurantMenu = ()=> {
             </ul>
             <ul>
                 {
-                    itemCategory.map((itemCat)=>(
-                        itemCat.map((items,index)=> <li  key={index}>{items.card?.card?.title}</li>)
+                    itemCategory.map((itemCat,index)=>(
+                         <li key={index}><RestaurantMenuAccordion data={itemCat?.card?.card}/></li>) //
                         )
-                    )
                 }
             </ul>
         </div>

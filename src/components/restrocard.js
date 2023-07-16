@@ -2,7 +2,7 @@ import "../App.css";
 import React from "react";
 import { IMG_LINK } from "../utils/resource";
 
-function Restrocard(props) {
+const Restrocard = (props) => {
   const { name, cuisines, avgRating, slaString , cloudinaryImageId, promoted
   } =
     props.resData.data;
@@ -18,9 +18,20 @@ function Restrocard(props) {
       <h4 className="truncate ... overflow-hidden">{cuisines.join(", ")}</h4>
       <span className="font-bold text-left bg-lime-500 w-12 rounded-md px-1">✡ {avgRating}</span>
       <h4 className="text-yellow-700 font-semibold">{slaString}</h4>
-      <h4 className="text-white bg-black font-semibold absolute p-1 rounded-md">{promoted?"Promoted":null}</h4>
     </div>
   );
-}
+};
+
+//Higher Order Component
+export const withPromotedLabel = (Restrocard) => {
+  return (props)=>{
+    return(
+      <div>
+        <label className="text-white bg-black font-semibold absolute p-1 mx-2 rounded-md">Promoted</label>
+        <Restrocard  {...props}/>
+      </div>
+    );
+  };
+};
 
 export default Restrocard

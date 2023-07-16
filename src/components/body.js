@@ -1,6 +1,6 @@
 import "../App.css";
 import React, { useEffect, useState } from "react";
-import Restrocard from "./restrocard";
+import Restrocard, { withPromotedLabel } from "./restrocard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 
@@ -8,11 +8,13 @@ export default function Body() {
   const [restoCard, setRestoCard] = useState([]);
   const [searchtText, setSearchText] = useState("");
 
+  const RestroCardWithPromotedLabel = withPromotedLabel(Restrocard); //Returen RestroCard Component with Promoted label on it
+
   useEffect(()=>{
     fetchData();
   },[])
 
-  console.log(restoCard);
+  //console.log(restoCard);
 
   const fetchData = async ()=>{
     let data = await fetch(
@@ -59,8 +61,11 @@ export default function Body() {
       </button>
       <div className="flex flex-wrap">
         {restoCard?.map((restro) => (
+          restro.data?.promoted ?
+          <Link to={"/restaurants/"+ restro.data.id} key={restro.data.id}><RestroCardWithPromotedLabel resData={restro} /></Link>
+          :
           <Link to={"/restaurants/"+ restro.data.id} key={restro.data.id}><Restrocard resData={restro} /></Link>
-        ))}
+))}
       </div>
     </div>
   );
