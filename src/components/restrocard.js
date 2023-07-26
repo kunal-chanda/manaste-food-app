@@ -3,10 +3,9 @@ import React from "react";
 import { IMG_LINK } from "../utils/resource";
 
 const Restrocard = (props) => {
-  const { name, cuisines, avgRating, slaString , cloudinaryImageId, promoted
-  } =
-    props.resData.data;
-    console.log(promoted)
+  const { name, cuisines, avgRating, slaString , cloudinaryImageId } =
+    props.resData.info;
+    //console.log(promoted)
   return (
     <div className="m-2 p-2 h-[275px] w-52 flex flex-col border bg-slate-300 rounded-md hover:bg-sky-400">
       <img

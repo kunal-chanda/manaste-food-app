@@ -14,16 +14,20 @@ export default function Body() {
     fetchData();
   },[])
 
-  //console.log(restoCard);
+  console.log(restoCard);
 
   const fetchData = async ()=>{
     let data = await fetch(
-      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.4791025&lng=88.37370639999999&page_type=DESKTOP_WEB_LISTING"
+      //"https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.4791025&lng=88.37370639999999&page_type=DESKTOP_WEB_LISTING"
       //"https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+      "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.4791025&lng=88.37370639999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
       const json = await data.json();
+      //console.log(json)
       //optional chaining
-      const resCards = json?.data?.cards[2]?.data?.data?.cards;
+      
+      const resCards = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      //const resCards = json?.data?.cards[2]?.data?.data?.cards;
       setRestoCard(resCards);
   }
   //conditional rendering
@@ -61,10 +65,10 @@ export default function Body() {
       </button>
       <div className="flex flex-wrap">
         {restoCard?.map((restro) => (
-          restro.data?.promoted ?
-          <Link to={"/restaurants/"+ restro.data.id} key={restro.data.id}><RestroCardWithPromotedLabel resData={restro} /></Link>
+          restro.info?.promoted ?
+          <Link to={"/restaurants/"+ restro.info.id} key={restro.info.id}><RestroCardWithPromotedLabel resData={restro} /></Link>
           :
-          <Link to={"/restaurants/"+ restro.data.id} key={restro.data.id}><Restrocard resData={restro} /></Link>
+          <Link to={"/restaurants/"+ restro.info.id} key={restro.info.id}><Restrocard resData={restro} /></Link>
 ))}
       </div>
     </div>
