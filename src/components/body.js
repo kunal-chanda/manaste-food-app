@@ -10,11 +10,13 @@ export default function Body() {
 
   const RestroCardWithPromotedLabel = withPromotedLabel(Restrocard); //Returen RestroCard Component with Promoted label on it
 
+  const dummy = "Dummy Data";
+
   useEffect(()=>{
     fetchData();
   },[])
 
-  console.log(restoCard);
+  //console.log(restoCard);
 
   const fetchData = async ()=>{
     let data = await fetch(
@@ -68,7 +70,7 @@ export default function Body() {
           restro.info?.promoted ?
           <Link to={"/restaurants/"+ restro.info.id} key={restro.info.id}><RestroCardWithPromotedLabel resData={restro} /></Link>
           :
-          <Link to={"/restaurants/"+ restro.info.id} key={restro.info.id}><Restrocard resData={restro} /></Link>
+          <Link to={"/restaurants/"+ restro.info.id} key={restro.info.id}><Restrocard resData={restro} dummy={dummy} /></Link>
 ))}
       </div>
     </div>
