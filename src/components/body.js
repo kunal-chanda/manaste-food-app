@@ -1,12 +1,14 @@
 import "../App.css";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import Restrocard, { withPromotedLabel } from "./restrocard";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 
 export default function Body() {
   const [restoCard, setRestoCard] = useState([]);
   const [searchtText, setSearchText] = useState("");
+  const {loggedInUser} = useContext(UserContext);
 
   const RestroCardWithPromotedLabel = withPromotedLabel(Restrocard); //Returen RestroCard Component with Promoted label on it
 
@@ -25,10 +27,10 @@ export default function Body() {
       "https://www.swiggy.com/dapi/restaurants/list/v5?lat=22.4791025&lng=88.37370639999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
       );
       const json = await data.json();
-      //console.log(json)
+      console.log(json)
       //optional chaining
       
-      const resCards = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      const resCards = json?.data?.cards[4]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
       //const resCards = json?.data?.cards[2]?.data?.data?.cards;
       setRestoCard(resCards);
   }
@@ -45,7 +47,7 @@ export default function Body() {
         <button
         onClick={()=> {
           const searchResult = 
-          restoCard.filter((filterdRestro)=> filterdRestro.data.name.toLowerCase().includes(searchtText.toLocaleLowerCase())) 
+          restoCard.filter((filterdRestro)=> filterdRestro.info.name.toLowerCase().includes(searchtText.toLocaleLowerCase())) 
           setRestoCard(searchResult)
         }
         } className="mx-2 border-4 rounded-xl p-2  border-slate-950"
@@ -56,7 +58,7 @@ export default function Body() {
       <button
         className="top-rated border-4 rounded-xl p-2  border-slate-950"
         onClick={() => {
-          let topCard = restoCard.filter((topRated) => topRated.data.avgRating >= 4);
+          let topCard = restoCard.filter((topRated) => topRated.info.avgRating >= 4.5);
           setRestoCard(topCard);
         }}
       >
@@ -65,6 +67,7 @@ export default function Body() {
       <button className="top-rated border-4 rounded-xl p-2  border-slate-950" onClick={()=> fetchData()}>
         Clear Filter
       </button>
+      <label className="ml-3 font-bold">User Name: </label><input type="text" value={loggedInUser} className="border border-black px-2" />
       <div className="flex flex-wrap">
         {restoCard?.map((restro) => (
           restro.info?.promoted ?

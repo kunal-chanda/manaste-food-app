@@ -1,10 +1,20 @@
-import React, { useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "../App.css";
 import { IMG_LOGO } from "../utils/resource";
 import { Link } from "react-router-dom";
+import UserContext from "../utils/UserContext";
 
 export default function Header() {
   const [btnHeader, setBtnHeader] = useState("LogIn");
+  const {loggedInUser} = useContext(UserContext);
+  const [userName, setUserName] = useState();
+  useEffect(()=>{
+    //user name after authentication
+    let user = {
+      name: "Kunal Chanda",
+    }
+    setUserName(user.name)
+  },[]);
 
   return (
     <div className="flex justify-between min-h-15 flex-row font-semibold bg-slate-400 text-2xl text-white items-center">
@@ -26,6 +36,7 @@ export default function Header() {
             {btnHeader}
           </button>
         </li>
+        <li>{userName? userName : loggedInUser}</li>
       </ul>
     </div>
   );

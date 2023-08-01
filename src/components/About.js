@@ -1,4 +1,5 @@
 /* eslint-disable no-useless-constructor */
+import UserContext from "../utils/UserContext";
 import UserClass from "./userClass";
 import React from "react";
 
@@ -17,6 +18,9 @@ class About extends React.Component{
         return(
             <>
                 <h1>About US</h1>
+                <UserContext.Consumer>
+                    {({loggedInUser})=><h1 className="font-bold">{loggedInUser}</h1>}
+                </UserContext.Consumer>
                 <h3>This is about us page</h3>
                 <div className="about-container">
                     <UserClass name={"Kunal Chanda"} location={"Balurghat, BeltalaPark"}/>

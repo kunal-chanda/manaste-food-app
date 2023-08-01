@@ -1,8 +1,10 @@
 import "../App.css";
-import React from "react";
+import React, { useContext } from "react";
 import { IMG_LINK } from "../utils/resource";
+import UserContext from "../utils/UserContext";
 
 const Restrocard = (props) => {
+  const {loggedInUser} = useContext(UserContext);
   const { name, cuisines, avgRating, sla , cloudinaryImageId } =
     props.resData.info;
   const dummy = props.dummy;  
@@ -18,7 +20,7 @@ const Restrocard = (props) => {
       <h4 className="truncate ... overflow-hidden">{cuisines.join(", ")}</h4>
       <span className="font-bold text-left bg-lime-500 w-12 rounded-md px-1">✡ {avgRating}</span>
       <h4 className="text-yellow-700 font-semibold">{sla.slaString}</h4>
-      <h4 className="text-yellow-700 font-semibold">User Name: {dummy}</h4>
+      <h4 className="text-yellow-700 font-semibold">User Name: {loggedInUser}</h4>
     </div>
   );
 };
