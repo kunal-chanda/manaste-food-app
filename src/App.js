@@ -18,7 +18,7 @@ function App() {
 
   return (
     <>
-    <UserContext.Provider value={{loggedInUser : userName}}>
+    <UserContext.Provider value={{loggedInUser : userName,setUserName}}>
       <Header />
       <Outlet />
       <Footer />
