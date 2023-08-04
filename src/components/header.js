@@ -3,10 +3,13 @@ import "../App.css";
 import { IMG_LOGO } from "../utils/resource";
 import { Link } from "react-router-dom";
 import UserContext from "../utils/UserContext";
+import { useSelector } from "react-redux";
 
 export default function Header() {
   const [btnHeader, setBtnHeader] = useState("LogIn");
   const {loggedInUser} = useContext(UserContext);
+  const cartItem = useSelector((store)=>store.cart.item);
+  console.log(cartItem);
 
   return (
     <div className="flex justify-between min-h-15 flex-row font-semibold bg-slate-400 text-2xl text-white items-center">
@@ -15,7 +18,7 @@ export default function Header() {
         <li><Link to="/">Home</Link></li>
         <li><Link to="/about" >About Us</Link></li>
         <li><Link to="/contact">Contact Us</Link></li>
-        <li>Cart</li>
+        <li className="font-semibold "><Link to="/cart"> Cart - ({cartItem.length} Items)</Link></li>
         <li><Link to="/form">Form</Link></li>
         <li>
           <button className="btn-header border-4 rounded-xl p-2"

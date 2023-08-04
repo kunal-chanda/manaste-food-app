@@ -1,6 +1,15 @@
+import { useDispatch } from "react-redux";
+import { addItem } from "../utils/cartSlice";
 import { IMG_LINK } from "../utils/resource";
 
+
 const ItemList = (props)=>{
+
+    const dispatch = useDispatch();
+
+    const addItemToCart = (item) =>{
+        dispatch(addItem(item.card?.info?.name));
+    }
     //console.log(props)
     return(
         <div>
@@ -12,7 +21,8 @@ const ItemList = (props)=>{
                     <div className="font-light text-sm pr-4">{(item.card?.info?.description || " ")}</div>
                 </div>
                 <div className="w-2/12">
-                    <button className="absolute mx-5 my-14 bottom border border-slate-500 shadow-lg px-4 py-1 rounded-md bg-white text-green-600 font-semibold text-sm hover:bg-blue-200">ADD</button>
+                    <button className="absolute mx-5 my-14 bottom border border-slate-500 shadow-lg px-4 py-1 rounded-md bg-white text-green-600 font-semibold text-sm hover:bg-blue-200"
+                    onClick={()=>addItemToCart(item)}>ADD</button>
                     <img src={IMG_LINK+item.card?.info?.imageId} alt="item" className="h-[80px] w-[90px] rounded-lg border-white mx-2"/>
                 </div>    
              </li>))}
