@@ -8,9 +8,10 @@ const ItemList = (props)=>{
     const dispatch = useDispatch();
 
     const addItemToCart = (item) =>{
-        dispatch(addItem(item.card?.info?.name));
+       // dispatch(addItem(item.card?.info?.name));
+        dispatch(addItem(item));
     }
-    //console.log(props)
+    console.log(props)
     return(
         <div>
             <ul>

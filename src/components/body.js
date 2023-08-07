@@ -50,13 +50,13 @@ export default function Body() {
           restoCard.filter((filterdRestro)=> filterdRestro.info.name.toLowerCase().includes(searchtText.toLocaleLowerCase())) 
           setRestoCard(searchResult)
         }
-        } className="mx-2 border-4 rounded-xl p-2  border-slate-950"
+        } className="mx-2 border-4 rounded-xl p-2  border-slate-950 bg-cyan-400"
         >
           Search
         </button>
       </>
       <button
-        className="top-rated border-4 rounded-xl p-2  border-slate-950"
+        className="top-rated border-4 rounded-xl p-2  border-slate-950 bg-cyan-400"
         onClick={() => {
           let topCard = restoCard.filter((topRated) => topRated.info.avgRating >= 4.5);
           setRestoCard(topCard);
@@ -64,7 +64,7 @@ export default function Body() {
       >
         Top Rated
       </button>
-      <button className="top-rated border-4 rounded-xl p-2  border-slate-950" onClick={()=> fetchData()}>
+      <button className="top-rated border-4 rounded-xl p-2  border-slate-950 bg-cyan-400" onClick={()=> fetchData()}>
         Clear Filter
       </button>
       <label className="ml-3 font-bold">User Name: </label><input type="text" value={loggedInUser} onChange={(e)=>{setUserName(e.target.value)}} className="border border-black px-2" />
