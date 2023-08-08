@@ -10,7 +10,7 @@ const Restrocard = (props) => {
   //const dummy = props.dummy;  
   //console.log(props.resData.info)
   return (
-    <div className="m-2 p-2 h-[300px] w-52 flex flex-col border bg-slate-300 rounded-md hover:bg-sky-400">
+    <div className="m-2 p-2 h-[300px] w-52 flex flex-col border bg-slate-300 rounded-md hover:bg-sky-200">
       <img
         className="h-40 w-48 rounded-md"
         src={IMG_LINK + "/" + cloudinaryImageId}
