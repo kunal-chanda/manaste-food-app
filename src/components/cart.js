@@ -7,6 +7,7 @@ const Cart = () =>{
     
     const dispatch = useDispatch();
     const cartItems = useSelector((store)=>store.cart.item);
+    
     const removeFromCart = (index) =>{
         dispatch(removeItem(index));
     }
