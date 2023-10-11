@@ -1,7 +1,7 @@
-import Sum  from "../Sum"
+import Sum from "../sum";
 
 test("Result of the Sum should be the sum of two munbers", ()=>{
-    const result = Sum(2,3);
+    const result = Sum(2,3)
 
     expect(result).toBe(5);
 })
