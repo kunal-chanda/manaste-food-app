@@ -68,7 +68,8 @@ export default function Body() {
       <button className="top-rated border-4 rounded-xl p-2  border-slate-950 bg-orange-50" onClick={()=> fetchData()}>
         Clear Filter
       </button>
-      <label className="ml-3 font-bold">User Name: </label><input type="text" value={loggedInUser} onChange={(e)=>{setUserName(e.target.value)}} className="border border-black px-2" />
+      <label className="ml-3 font-bold">User Name: </label>
+      <input type="text" value={loggedInUser} onChange={(e)=>{setUserName(e.target.value)}} className="border border-black px-2" />
       <div className="flex flex-wrap">
         {restoCard?.map((restro) => (
           restro.info?.promoted ?
