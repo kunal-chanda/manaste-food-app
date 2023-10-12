@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 const Contact = () => {
 
   const [name, setName] = useState('Default');
-  const [email, setEmail] = useState('default');
+  const [email, setEmail] = useState('Default');
 
   const handleSubmit = (e)=>{
     e.preventDefault();
@@ -18,7 +18,7 @@ const Contact = () => {
           <label className='text-xl font-bold'>Email: </label><input type='email' name='email' placeholder='Enter Email..' />
           <button className='bg-teal-300 rounded-xl px-4 py-2 text-xl'>Send</button>
         </form>
-        {<p className='text-xl font-bold'>Thanks {name}. We will contact to {email}.</p>} 
+        {name!=="Default" ? <p className='text-xl font-bold'>Thanks {name}. We will contact to {email}.</p> : ""} 
     </div>
   )
 }
