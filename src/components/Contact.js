@@ -12,7 +12,7 @@ const Contact = () => {
   }
   return (
     <div className='text-center'>
-        <p className='text-xl font-bold'>Contact US</p>
+        <h1 className='text-xl font-bold'>Contact Us</h1>
         <form onSubmit={handleSubmit} className='m-4'>
           <label className='text-xl font-bold'>Name: </label><input type='text' name='name' placeholder='Enter name..' />
           <label className='text-xl font-bold'>Email: </label><input type='email' name='email' placeholder='Enter Email..' />
