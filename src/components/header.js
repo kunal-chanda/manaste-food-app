@@ -20,6 +20,7 @@ export default function Header() {
         <li><Link to="/contact">Contact Us</Link></li>
         <li className="font-semibold "><Link to="/cart"> Cart - ({cartItem.length} Items)</Link></li>
         <li><Link to="/form">Form</Link></li>
+        <li><Link to="/demo">Demo</Link></li>
         <li>
           <button className="btn-header border-4 rounded-xl p-2"
             onClick={()=>{

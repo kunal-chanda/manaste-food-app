@@ -10,6 +10,7 @@ import Body from "./components/body";
 import RestaurantMenu from "./components/RestaurantMenu";
 import Form from "./components/Form";
 import Cart from "./components/cart";
+import Demo from "./components/Demo";
 
 const reactRouter = createBrowserRouter([
   {
@@ -39,6 +40,10 @@ const reactRouter = createBrowserRouter([
       {
         path: "/cart",
         element: <Cart />,
+      },
+        {
+        path: "/demo",
+        element: <Demo />,
       },
     ],
     errorElement: <Error />,
