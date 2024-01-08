@@ -7,5 +7,8 @@ test("Should load the Contact Us Page",()=>{
 
     const title = screen.getByRole('heading');
     expect(title).toBeInTheDocument();
+
+    const name = screen.getByText('name');
+    expect(name).toBeInTheDocument();
     
 })
