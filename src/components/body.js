@@ -31,7 +31,7 @@ export default function Body() {
       console.log(json)
       //optional chaining
       
-      const resCards = json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+      const resCards = json?.data?.cards[1]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
       //const resCards = json?.data?.cards[2]?.data?.data?.cards;
       setRestoCard(resCards);
   }
